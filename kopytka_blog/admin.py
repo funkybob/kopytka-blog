@@ -4,7 +4,7 @@ from . import forms, models
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created', 'live_date', 'kill_date', 'posted_by',)
+    list_display = ('title', 'is_published', 'created', 'live_date', 'kill_date', 'posted_by',)
     list_filter = ('posted_by',)
     date_hierarchy = 'live_date'
     search_fields = ('title', 'content',)
