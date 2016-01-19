@@ -29,9 +29,5 @@ class PostDetail(PostMixin, generic.DetailView):
     most_like = 6
 
     def get_context_data(self, **kwargs):
-        most_like = (
-            self.get_queryset()
-            .most_like('tags', self.object.tags)
-            .exclude(pk=self.object.pk)
-        )[:self.most_like]
+        most_like = self.object.get_most_like_by_tags()[:self.most_like]
         return super().get_context_data(most_like=most_like, **kwargs)
