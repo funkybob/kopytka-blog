@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                 ('live_date', models.DateTimeField(default=django.utils.timezone.now, verbose_name='Post goes live at')),
                 ('kill_date', models.DateTimeField(blank=True, default=None, null=True, verbose_name='Post expires at')),
                 ('is_published', models.BooleanField(db_index=True, default=False, verbose_name='Is Published?')),
-                ('tags', array_tags.fields.TagField(base_field=models.CharField(max_length=50), blank=True, size=None)),
+                ('tags', array_tags.fields.TagField(base_field=models.CharField(max_length=50), lower=True, size=None)),
                 ('posted_by', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
             options={

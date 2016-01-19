@@ -22,7 +22,7 @@ class Post(models.Model):
 
     posted_by = models.ForeignKey(settings.AUTH_USER_MODEL)
 
-    tags = TagField(blank=True)
+    tags = TagField(lower=True)
 
     objects = managers.PostQuerySet.as_manager()
 
