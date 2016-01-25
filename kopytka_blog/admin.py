@@ -10,6 +10,25 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ('title', 'content',)
     prepopulated_fields = {'slug': ('title',)}
     form = forms.PostAdminForm
+    readonly_fields = ('created', 'posted_by',)
+
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'slug'),
+        }),
+        ('Content', {
+            'fields': (
+                'content',
+                ('tags', 'auto'),
+            ),
+        }),
+        ('Extra', {
+            'fields': (
+                ('created', 'posted_by'),
+                ('is_published', 'live_date', 'kill_date'),
+            ),
+        }),
+    )
 
     def queryset(self, request):
         '''
