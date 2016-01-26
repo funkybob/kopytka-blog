@@ -17,7 +17,7 @@ class PostMixin:
 class PostList(PostMixin, generic.ListView):
     allow_empty = True
     paginate_by = 12
-    ordering = ('live_date',)
+    ordering = ('-live_date',)
 
     def get_context_data(self, **kwargs):
         tag_counts = self.object_list.count_tag_values('tags')
