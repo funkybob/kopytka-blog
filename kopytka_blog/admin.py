@@ -47,7 +47,7 @@ class PostAdmin(admin.ModelAdmin):
         return super().save_model(request, obj, form, change)
 
     def auto_tag(self, request, queryset):
-        taglist = models.Page.objects.all_tag_values()
+        taglist = models.Post.objects.all_tag_values('tags')
         for post in queryset:
             post.auto_tag(taglist)
             post.save()
