@@ -20,8 +20,7 @@ class PostList(PostMixin, generic.ListView):
     ordering = ('-live_date',)
 
     def get_context_data(self, **kwargs):
-        tag_counts = self.object_list.count_tag_values('tags')
-        most_common = sorted(tag_counts.items(), key=lambda x: x[1])
+        most_common = self.object_list.count_tag_values('tags').order_by('count')
         return super().get_context_data(most_common=most_common, **kwargs)
 
 
